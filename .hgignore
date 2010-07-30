@@ -1,0 +1,16 @@
+glob:Quickstart2008/*.suo
+glob:Quickstart2010/*.suo
+glob:Quickstart2008/Quickstart2008/obj/
+glob:Quickstart2010/Quickstart2010/obj/
+glob:Quickstart2008/Quickstart2008/bin/Debug/Quickstart2008.exe
+glob:Quickstart2008/Quickstart2008/bin/Debug/Quickstart2008.pdb
+glob:Quickstart2008/Quickstart2008/bin/Release/Quickstart2008.exe
+glob:Quickstart2008/Quickstart2008/bin/Release/Quickstart2008.pdb
+glob:Quickstart2010/Quickstart2010/bin/Debug/Quickstart2010.exe
+glob:Quickstart2010/Quickstart2010/bin/Debug/Quickstart2010.pdb
+glob:Quickstart2010/Quickstart2010/bin/Release/Quickstart2010.exe
+glob:Quickstart2010/Quickstart2010/bin/Release/Quickstart2010.pdb
+glob:Quickstart2008/Quickstart2008/bin/Debug/mogre.log
+glob:Quickstart2008/Quickstart2008/bin/Release/mogre.log
+glob:Quickstart2010/Quickstart2010/bin/Debug/mogre.log
+glob:Quickstart2010/Quickstart2010/bin/Release/mogre.log
