@@ -89,7 +89,7 @@ namespace Quickstart2010.Modules
       parm[ "vsync" ] = "true";
 
       // create window
-      mWindow = mRoot.CreateRenderWindow( "Mogre Quickstart 2010", 800, 600, false, parm );
+      mWindow = mRoot.CreateRenderWindow( "Simple Mogre Quickstart 2010", 800, 600, false, parm );
 
       // create scene manager
       mSceneMgr = mRoot.CreateSceneManager( SceneType.ST_GENERIC, "DefaultSceneManager" );
