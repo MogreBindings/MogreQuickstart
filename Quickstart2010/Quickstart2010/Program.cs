@@ -3,6 +3,7 @@
 using Mogre;
 
 using Quickstart2010.Modules;
+using Quickstart2010.States;
 
 namespace Quickstart2010
 {
@@ -10,9 +11,11 @@ namespace Quickstart2010
   {
     //////////////////////////////////////////////////////////////////////////
     private static OgreManager mEngine;
+    private static StateManager mStateMgr;
+
+    //////////////////////////////////////////////////////////////////////////
     private Light mLight1;
     private Light mLight2;
-    private SceneNode mOgreHead;
 
     /************************************************************************/
     /* program starts here                                                  */
@@ -22,10 +25,15 @@ namespace Quickstart2010
     {
       // create Ogre manager
       mEngine = new OgreManager();
+
+      // create state manager
+      mStateMgr = new StateManager( mEngine );
+
+      // create main program
       Program prg = new Program();
 
-      // try to initialize Ogre
-      if( mEngine.Startup() )
+      // try to initialize Ogre and the state manager
+      if( mEngine.Startup() && mStateMgr.Startup( typeof( TurningHead ) ) )
       {
         // create objects in scene
         prg.CreateScene();
@@ -44,6 +52,9 @@ namespace Quickstart2010
         prg.RemoveScene();
       }
 
+      // shut down state manager
+      mStateMgr.Shutdown();
+
       // shutdown Ogre
       mEngine.Shutdown();
     }
@@ -55,7 +66,6 @@ namespace Quickstart2010
     {
       mLight1 = null;
       mLight2 = null;
-      mOgreHead = null;
     }
 
     /************************************************************************/
@@ -83,9 +93,6 @@ namespace Quickstart2010
       mLight2.DiffuseColour = new ColourValue( 0.1f, 0.15f, 0.3f );
       mLight2.Position = new Vector3( 150.0f, 100.0f, -400.0f );
       mEngine.SceneMgr.RootSceneNode.AttachObject( mLight2 );
-
-      mOgreHead = mEngine.CreateSimpleObject( "Ogre", "ogrehead.mesh" );
-      mEngine.AddObjectToScene( mOgreHead );
     }
 
     /************************************************************************/
@@ -93,12 +100,8 @@ namespace Quickstart2010
     /************************************************************************/
     public void UpdateScene()
     {
-      // check if ogre head exists
-      if( mOgreHead != null )
-      {
-        // rotate the ogre head a little bit
-        mOgreHead.Rotate( Vector3.UNIT_Y, new Radian( new Degree( 0.5f ) ) );
-      }
+      // update the state manager, this will automatically update the active state
+      mStateMgr.Update( 0 );
     }
 
     /************************************************************************/
@@ -106,15 +109,6 @@ namespace Quickstart2010
     /************************************************************************/
     public void RemoveScene()
     {
-      // check if ogre head exists
-      if( mOgreHead != null )
-      {
-        // remove ogre head from scene and destroy it
-        mEngine.RemoveObjectFromScene( mOgreHead );
-        mEngine.DestroyObject( mOgreHead );
-        mOgreHead = null;
-      }
-
       // check if light 2 exists
       if( mLight2 != null )
       {
