@@ -2,27 +2,27 @@
 
 namespace Quickstart2010.Modules
 {
-  /************************************************************************/
-  /* resource group configuration                                         */
-  /************************************************************************/
-  [Serializable]
-  public class ResourceConfig
-  {
-    //////////////////////////////////////////////////////////////////////////
-    public string Group;
-    public string Directory;
-    public string PackFile;
-
     /************************************************************************/
-    /* constructor                                                          */
+    /* resource group configuration                                         */
     /************************************************************************/
-    internal ResourceConfig()
+    [Serializable]
+    public class ResourceConfig
     {
-      Group = string.Empty;
-      Directory = string.Empty;
-      PackFile = string.Empty;
-    }
+        //////////////////////////////////////////////////////////////////////////
+        public string Group;
+        public string Directory;
+        public string PackFile;
 
-  } // class
+        /************************************************************************/
+        /* constructor                                                          */
+        /************************************************************************/
+        internal ResourceConfig()
+        {
+            Group = string.Empty;
+            Directory = string.Empty;
+            PackFile = string.Empty;
+        }
+
+    } // class
 
 } // namespace
